@@ -61,6 +61,27 @@ public class MusicOrganizer
         }
     }
     
+    public void randomPlaylist()
+    {
+        ArrayList<Track> shuffle = new ArrayList<>(); 
+        Random rnd = new Random();
+        int index;
+        for (Track track : tracks)
+        {
+            shuffle.add(track);
+            System.out.println(shuffle.size());
+        }
+        while (shuffle.size() > 0)
+        {
+            index = rnd.nextInt(shuffle.size());
+            Track track = shuffle.get(index);
+            player.startPlaying(track.getFilename());
+            System.out.println("Now playing: " + track.getArtist() 
+            + " - " + track.getTitle());
+            shuffle.remove(index);
+        }
+    }
+    
     /**
      * Play a random track in the collection.
      */
