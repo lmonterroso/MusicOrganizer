@@ -64,6 +64,7 @@ public class MusicOrganizer
     public void randomPlaylist()
     {
         ArrayList<Track> shuffle = new ArrayList<>(); 
+        Track song;
         Random rnd = new Random();
         int index;
         for (Track track : tracks)
@@ -74,11 +75,11 @@ public class MusicOrganizer
         while (shuffle.size() > 0)
         {
             index = rnd.nextInt(shuffle.size());
-            Track track = shuffle.get(index);
-            player.startPlaying(track.getFilename());
-            System.out.println("Now playing: " + track.getArtist() 
-            + " - " + track.getTitle());
-            shuffle.remove(index);
+            song = shuffle.get(index);
+            System.out.println("Now playing: " + song.getArtist() + " - " + song.getTitle());
+            player.playSample(song.getFilename());
+            shuffle.remove(song);
+            
         }
     }
     
